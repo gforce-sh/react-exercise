@@ -1,18 +1,17 @@
-import styled, {css} from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 
-export const EmojiRow = ({emoji}) => {
-    const {character, name, code} = emoji;
+export const EmojiRow = ({ emoji }) => {
+  const { character, unicodeName, codePoint } = emoji;
 
-
-    return (
-        <EmojiRowContainer>
-            <EmojiBoxAndName>
-                <EmojiBox>{character}</EmojiBox>
-                <span>{name}</span>
-            </EmojiBoxAndName>
-            <span>{code}</span>
-        </EmojiRowContainer>
-    );
+  return (
+    <EmojiRowContainer>
+      <EmojiBoxAndName>
+        <EmojiBox>{character}</EmojiBox>
+        <span>{unicodeName}</span>
+      </EmojiBoxAndName>
+      <span>{codePoint}</span>
+    </EmojiRowContainer>
+  );
 };
 
 const centreAlignedBox = css`

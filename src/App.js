@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { EmojiRow } from './components/EmojiRow';
 import styled from 'styled-components/macro';
-import emojis from './resources/emojis.json';
 import { Input } from 'semantic-ui-react';
+import debounce from 'lodash.debounce';
+import { getEmojis } from './api/emoji';
 
 export const App = () => {
-  const [searchText, setSearchText] = useState('');
+  const [emojis, setEmojis] = useState([]);
 
-  const filteredEmojis = emojis.filter((emoji) =>
-    emoji.name.includes(searchText),
+  const deboucedEmojiSearch = debounce(
+    async (searchText) => setEmojis(await getEmojis(searchText)),
+    500,
   );
 
   return (
@@ -17,13 +19,13 @@ export const App = () => {
         fluid
         icon="search"
         placeholder="Search..."
-        onChange={(e) => {
-          setSearchText(e.target.value);
+        onChange={async (e) => {
+          await deboucedEmojiSearch(e.target.value);
         }}
       />
       <EmojiTableWrapper>
-        {filteredEmojis.map((emoji) => {
-          return <EmojiRow key={emoji.code} emoji={emoji} />;
+        {emojis?.map((emoji) => {
+          return <EmojiRow key={emoji.slug} emoji={emoji} />;
         })}
       </EmojiTableWrapper>
     </AppWrapper>
