@@ -1,16 +1,19 @@
 import styled, { css } from 'styled-components/macro';
+import { Link } from 'react-router-dom';
 
 export const EmojiRow = ({ emoji }) => {
-  const { character, unicodeName, codePoint } = emoji;
+  const { character, unicodeName, codePoint, slug } = emoji;
 
   return (
-    <EmojiRowContainer>
-      <EmojiBoxAndName>
-        <EmojiBox>{character}</EmojiBox>
-        <span>{unicodeName}</span>
-      </EmojiBoxAndName>
-      <span>{codePoint}</span>
-    </EmojiRowContainer>
+    <Link to={`/emoji/${slug}`}>
+      <EmojiRowContainer>
+        <EmojiBoxAndName>
+          <EmojiBox>{character}</EmojiBox>
+          <span>{unicodeName}</span>
+        </EmojiBoxAndName>
+        <span>{codePoint}</span>
+      </EmojiRowContainer>
+    </Link>
   );
 };
 

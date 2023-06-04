@@ -11,3 +11,13 @@ export const getEmojis = async (searchText) => {
     console.log('Error in fetching emojis', err.msg);
   }
 };
+
+export const getEmoji = async (slug) => {
+  const url = `${ENDPOINT}/${slug}?access_key=${API_KEY}`;
+  try {
+    const res = await fetch(url);
+    return await res.json();
+  } catch (err) {
+    console.log('Error in fetching emoji from slug', err.msg);
+  }
+};
