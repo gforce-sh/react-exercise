@@ -16,7 +16,6 @@ export const EmojiDetails = () => {
   const { slug } = useParams();
   const [emoji, setEmoji] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  console.log(emoji);
 
   useEffect(() => {
     getEmoji(slug)
