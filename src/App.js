@@ -1,17 +1,25 @@
 import { useState } from 'react';
 import { EmojiRow } from './components/EmojiRow';
 import styled from 'styled-components/macro';
-import { Input } from 'semantic-ui-react';
+import { Input, Loader } from 'semantic-ui-react';
 import debounce from 'lodash.debounce';
 import { getEmojis } from './api/emoji';
 
 export const App = () => {
   const [emojis, setEmojis] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const deboucedEmojiSearch = debounce(
-    async (searchText) => setEmojis(await getEmojis(searchText)),
-    500,
-  );
+  const fetchEmojis = async (e) => {
+    const searchText = e?.target?.value;
+    if (!searchText) return;
+
+    setIsLoading(true);
+    const emojis = await getEmojis(searchText);
+    setEmojis(emojis);
+    setIsLoading(false);
+  };
+
+  const deboucedEmojiSearch = debounce(fetchEmojis, 500);
 
   return (
     <AppWrapper>
@@ -19,14 +27,18 @@ export const App = () => {
         fluid
         icon="search"
         placeholder="Search..."
-        onChange={async (e) => {
-          await deboucedEmojiSearch(e.target.value);
-        }}
+        onChange={deboucedEmojiSearch}
       />
       <EmojiTableWrapper>
-        {emojis?.map((emoji) => {
-          return <EmojiRow key={emoji.slug} emoji={emoji} />;
-        })}
+        {isLoading ? (
+          <Loader active inline="centered">
+            Loading
+          </Loader>
+        ) : (
+          emojis?.map((emoji) => {
+            return <EmojiRow key={emoji.slug} emoji={emoji} />;
+          })
+        )}
       </EmojiTableWrapper>
     </AppWrapper>
   );
