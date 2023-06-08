@@ -9,17 +9,17 @@ export const EmojiSearch = () => {
   const [emojis, setEmojis] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchEmojis = async (e) => {
-    const searchText = e?.target?.value;
-    if (!searchText) return;
-
+  const fetchEmojis = async (searchText = '') => {
     setIsLoading(true);
     const emojis = await getEmojis(searchText);
     setEmojis(emojis);
     setIsLoading(false);
   };
 
-  const deboucedEmojiSearch = debounce(fetchEmojis, 500);
+  const deboucedEmojiSearch = debounce(
+    (searchText) => fetchEmojis(searchText),
+    500,
+  );
 
   return (
     <>
@@ -27,7 +27,7 @@ export const EmojiSearch = () => {
         fluid
         icon="search"
         placeholder="Search..."
-        onChange={deboucedEmojiSearch}
+        onChange={(e, data) => deboucedEmojiSearch(data?.value)}
       />
       <EmojiTableWrapper>
         {isLoading ? (
