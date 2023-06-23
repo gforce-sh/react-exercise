@@ -1,4 +1,4 @@
-const API_KEY = '9a00d572f20a67f3c584fb39e54f32dd5ac5e671';
+const API_KEY = 'ADD-YOUR-API-KEY-HERE';
 const ENDPOINT = 'https://emoji-api.com/emojis';
 
 export const getEmojis = async (searchText) => {
