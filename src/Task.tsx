@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export interface TaskProps {
   /** The description of the task */
@@ -15,10 +15,6 @@ export interface TaskProps {
 export const Task = ({ description, size, colour, completed: isCompleted = false }: TaskProps) => {
   const [completed, setCompleted] = useState(isCompleted);
 
-  useEffect(() => {
-    setCompleted(isCompleted);
-  }, [isCompleted]);
-
   return (
     <TaskContainer completed={completed} colour={colour} onClick={() => setCompleted(!completed)}>
       <Text completed={completed} size={size}>{description}</Text>
@@ -28,6 +24,8 @@ export const Task = ({ description, size, colour, completed: isCompleted = false
 const TaskContainer = styled.div<{ completed?: boolean, colour?: string }>`
     display: flex;
     align-items: center;
+    //max-width: 600px;
+    //width: 100%;
 
     background: ${({ completed, colour }) => (completed ? colour ? colour : '#c1ffb1' : 'none')};
     height: 100%;
