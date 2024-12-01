@@ -24,9 +24,6 @@ export const Task = ({ description, size, colour, completed: isCompleted = false
 const TaskContainer = styled.div<{ completed?: boolean, colour?: string }>`
     display: flex;
     align-items: center;
-    //max-width: 600px;
-    //width: 100%;
-
     background: ${({ completed, colour }) => (completed ? colour ? colour : '#c1ffb1' : 'none')};
     height: 100%;
     cursor: pointer;
