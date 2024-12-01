@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export interface TaskProps {
   /** The description of the task */
@@ -14,6 +14,10 @@ export interface TaskProps {
 
 export const Task = ({ description, size, colour, completed: isCompleted = false }: TaskProps) => {
   const [completed, setCompleted] = useState(isCompleted);
+
+  useEffect(() => {
+    setCompleted(isCompleted);
+  }, [isCompleted]);
 
   return (
     <TaskContainer completed={completed} colour={colour} onClick={() => setCompleted(!completed)}>

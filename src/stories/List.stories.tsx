@@ -22,22 +22,6 @@ export const Default: Story = {
   },
 };
 
-// const ListTemplate: Story = {
-//   render: ({ tasks, ...args }) => {
-//     return (
-//       <List tasks={tasks} {...args} />
-//     );
-//   },
-// };
-//
-// export const Default: Story = {
-//   ...ListTemplate,
-//   args: {
-//     spacing: 'comfortable',
-//     tasks,
-//   },
-// };
-
 export const Loading: Story = {
   args: {
     spacing: 'comfortable',
