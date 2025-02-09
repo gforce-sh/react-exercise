@@ -1,23 +1,42 @@
-# emoji-dynamic-search
+# About
 
-In this lab, we will learn how to consume a public API and render a dynamic list of emojis
+This repo contains exercises for the Frontend-React course
+at https://gforce-sh.github.io/software-basics/category/exercises.
 
-![](assets/dynamic-demo.gif)
+## Author
 
-#### Public api
+Content written by Gaurav Sharma.
 
-You may use the following api to fetch emojis from remote:
+## Instructions
 
-`https://emoji-api.com/`
+- Please add implementations onto the `main` branch.
+- A sample react application is available in the `react-app-template` branch.
+- The project setup is based on [Create React App](https://create-react-app.dev).
 
-> Useful links:
->
-> - [JS fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
-> - [Lodash debounce](https://lodash.com/docs/#debounce)
-> - [Debounce npm package](https://www.npmjs.com/package/lodash.debounce)
+# Pre-installed packages
 
-> - [React hooks docs](https://react.dev/reference/react)
+Refer to package.json for a list of dependencies.
 
-> Further reading:
->
-> - [React query](https://tanstack.com/query/latest/)
+This project uses `styled components` instead of css files for adding component styles.
+Refer [here](https://styled-components.com/docs/basics#getting-started) for more information on how to use it.
+
+# Starting the application
+
+In the project directory, you can run `npm start`. This runs the app in development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make
+changes. You may also see any lint errors in the console.
+
+# License
+
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
+
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
